@@ -1,24 +1,40 @@
-# Mario's Family Feast
+# Mario's Nostalgia Bites
 
-Build a website for my restaurant: Mario's Italian Restaurant, in San Francisco CA. It's an old fashioned, family oriented restaurant with great pastas, pizzas and salads. Nostalgia vibes.
+A sample [Lovable](https://lovable.dev) project used as the reference site for [Prodify](https://refaktr.io/prodify/), which turns a Lovable export into a CloudFormation stack hosted on S3 + CloudFront in your own AWS account.
 
-This project was built with [Lovable](https://lovable.dev).
+Mario's Italian Restaurant is **fictional** — the address, phone number, history, and menu are invented for this demo.
 
-## Build with Lovable
+## What's in here
 
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/4a5e94ab-3188-43f6-a4e5-632927f8206a).
+This is an unmodified Lovable export (current `tanstack_start_ts` template: TanStack Start, React 19, Tailwind 4, shadcn/ui, built with Vite + Nitro) with one change:
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+```ts
+// vite.config.ts
+tanstackStart: {
+  server: { entry: "server" },
+  prerender: { enabled: true, crawlLinks: true, autoStaticPathsDiscovery: true },
+}
+```
 
-## Development
+Lovable's template builds a Cloudflare Worker by default. Enabling TanStack Start's prerendering makes `bun run build` also write a complete static site to `.output/public/`, which is what Prodify deploys. The site has no backend, so every page can be rendered at build time.
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+## Deploy it with Prodify
+
+1. Download this repository as a zip (**Code → Download ZIP**).
+2. Upload the zip at [refaktr.io/prodify](https://refaktr.io/prodify/).
+3. Open the **Deploy to AWS** link in the region your AWS account uses (new AWS accounts are assigned one region — usually Ohio `us-east-2`, Stockholm, or Sydney) and create the stack.
+4. The `SiteURL` output is your site on CloudFront.
+
+The stack's `ContentDeployer` Lambda runs `bun install && bun run build` in your account and syncs `.output/public/` to a private S3 bucket behind CloudFront.
+
+## Run locally
 
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
+bun install
+bun run dev      # http://localhost:8080
+bun run build    # writes .output/public (static) and .output/server (worker)
 ```
+
+## License
+
+MIT — see [LICENSE](LICENSE). Built with Lovable.

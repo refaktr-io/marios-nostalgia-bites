@@ -308,9 +308,9 @@ function Index() {
             {/* Location */}
             <div className="rounded-3xl bg-frost/10 p-7 ring-1 ring-frost/20 backdrop-blur-sm lg:col-span-4">
               <p className="text-[11px] font-medium uppercase tracking-[0.24em] text-brass">Find us</p>
-              <p className="mt-5 font-display text-2xl font-semibold text-frost">428 Columbus Ave</p>
+              <p className="mt-5 font-display text-2xl font-semibold text-frost">100 Via Nostalgia</p>
               <p className="mt-1 text-base leading-relaxed text-frost/75">
-                North Beach, San Francisco, CA 94133
+                North Beach, San Francisco, CA (a fictional address)
               </p>
               <p className="mt-5 text-base text-frost/70">
                 Two blocks from the cable car, look for the red awning and the smell of the oven.
@@ -343,6 +343,7 @@ function Index() {
           <footer className="mt-12 flex flex-col gap-2 border-t border-frost/15 pt-8 text-sm text-frost/55 sm:flex-row sm:items-center sm:justify-between">
             <span className="font-display text-lg text-frost/80">Mario's Italian Restaurant</span>
             <span>Family owned since 1962 · San Francisco, CA</span>
+            <span>A fictional restaurant · sample project</span>
             <span>(415) 555-0162</span>
           </footer>
         </div>
