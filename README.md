@@ -6,17 +6,9 @@ Mario's Italian Restaurant is **fictional** — the address, phone number, histo
 
 ## What's in here
 
-This is an unmodified Lovable export (current `tanstack_start_ts` template: TanStack Start, React 19, Tailwind 4, shadcn/ui, built with Vite + Nitro) with one change:
+An **unmodified Lovable export** — the current `tanstack_start_ts` template (TanStack Start, React 19, Tailwind 4, shadcn/ui, built with Vite + Nitro). The only edits are cosmetic: a license, this README, and a fictional address.
 
-```ts
-// vite.config.ts
-tanstackStart: {
-  server: { entry: "server" },
-  prerender: { enabled: true, crawlLinks: true, autoStaticPathsDiscovery: true },
-}
-```
-
-Lovable's template builds a Cloudflare Worker by default. Enabling TanStack Start's prerendering makes `bun run build` also write a complete static site to `.output/public/`, which is what Prodify deploys. The site has no backend, so every page can be rendered at build time.
+Lovable's template builds a Cloudflare Worker by default. Prodify's deployer enables TanStack Start prerendering in its own build copy, so `bun run build` also writes a complete static site to `.output/public/` — nothing in this repo needs to change for that. The site has no backend, so every page can be rendered at build time.
 
 ## Deploy it with Prodify
 

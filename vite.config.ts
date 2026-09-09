@@ -11,8 +11,5 @@ export default defineConfig({
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
     server: { entry: "server" },
-    // Render every route to static HTML at build time so the site can be hosted
-    // on S3 + CloudFront (Prodify deploys .output/public).
-    prerender: { enabled: true, crawlLinks: true, autoStaticPathsDiscovery: true },
   },
 });
